@@ -1,0 +1,14 @@
+Docker Deploy Steps:
+
+1. Start private registry on port 5000.
+2. Start init-script.sh to do the following tasks:
+	- Build a new docker image for a simple node.js app. 
+	- Push the new docker image to the registry.
+	- Deploy the App to Blue slice on port 50100 and Green slice on port 50101. 
+3. Check if the app is running in both the containers. 
+4. Change the message in the main.js file. 
+5. A commit will build a new docker image and push to the local registery. 
+6. Deploy the dockerized simple node.js App to blue slice. 
+7. Check the updated message. 
+8. Deploy the dockerized simple node.js App to green slice.
+9. Check the updated message. 

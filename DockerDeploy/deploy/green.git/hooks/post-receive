@@ -1,0 +1,12 @@
+#!/bin/sh
+
+GIT_WORK_TREE=/home/nisarg/NCSU/Fall15/DevOps/Devops-AdvancedDocker/deploy/green-www/ git checkout -f
+
+echo "Pulling the latest image from the registry"
+docker pull localhost:5000/ncsu:latest  
+echo "Stop and restart Green slice container"
+docker stop green-app  
+docker rm green-app
+docker rmi localhost:5000/ncsu:current-green 
+docker tag localhost:5000/ncsu:latest localhost:5000/ncsu:current-green
+docker run -p 50101:8080 -d --name green-app localhost:5000/ncsu:latest

@@ -1,0 +1,22 @@
+FileIO Steps:
+
+1. Create a Docker file for the Legacy Application that generates a file and uses socat to make its contents available on port 9090
+
+2. Build Docker file for Legacy Application
+	docker build -t legacyappimage .
+
+3. Run Legacy App in a Legacy App Container
+	docker run -it --rm --name legacyappcontainer legacyappimage
+
+4. Create a new container which is linked to Legacy App Container. This opens the bash shell of the container
+	docker run -it --rm --name linkedcontainer --link legacyappcontainer ubuntu:14.04 /bin/bash
+
+5. Install curl in the the new container
+	apt-get install curl
+
+6. Curl to the Legacy App Container at port 9001 to see the contents of the shared file
+	curl legacyappcontainer:9001
+
+7. Check the list of linked containers
+	docker inspect -f "{{ .HostConfig.Links }}" linkedcontainer
+Done
