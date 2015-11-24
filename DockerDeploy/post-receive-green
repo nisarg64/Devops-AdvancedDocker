@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# This is the script that will be triggered upon a `git push` to the green repo.
+# The script stops the currently running application on the blue container and deploys the latest version of the application.
+
+GIT_WORK_TREE=/home/ashwin_oke/deploy/green-www/ git checkout -f
+
+sudo docker pull localhost:5000/ncsu:latest
+sudo docker stop app_green
+sudo docker rm app_green
+sudo docker rmi localhost:5000/ncsu:current_green  
+sudo docker tag localhost:5000/ncsu:latest localhost:5000/ncsu:current_green
+sudo docker run -p 50101:8080 -d --name app_green localhost:5000/ncsu:current_green
+
