@@ -99,6 +99,17 @@
 
 - A [commit](https://github.com/nisarg64/Devops-AdvancedDocker/blob/master/DockerDeploy/post-commit) will build a new docker image and push to the local registery. 
 
+- Make sure that you have a folder structure as follows:
+
+	* deploy/
+		* blue.git/
+  		* green.git/
+
+- Both these folders must be initialized as Git Bare Repositories
+```
+	git init --bare
+```
+
 - Add remote origin for the blue and green slices
 ```
 	git remote add blue "file://$ROOT/blue.git"
@@ -106,14 +117,17 @@
 ```
 
 - [Deploy](https://github.com/nisarg64/Devops-AdvancedDocker/blob/master/DockerDeploy/post-receive-blue) the dockerized simple node.js App to blue slice. 
+	- These commands will trigger the post-receive hook of the blue-slice to deploy the app
 ```
 	git push blue master
 	curl localhost:50100 
 ```
 
+
 - Change the message in the main.js file for blue slice.
 
 - [Deploy](https://github.com/nisarg64/Devops-AdvancedDocker/blob/master/DockerDeploy/post-receive-green) the dockerized simple node.js App to green slice.
+	- - These commands will trigger the post-receive hook of the green-slice to deploy the app
 ```
 	git push green master
 	curl localhost:50101 
