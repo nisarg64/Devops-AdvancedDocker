@@ -1,0 +1,6 @@
+#!/bin/sh
+
+sudo docker build -t ncsu-app .
+sudo docker rmi localhost:5000/ncsu:latest
+sudo docker tag ncsu-app localhost:5000/ncsu:latest
+sudo docker push localhost:5000/ncsu:latest
