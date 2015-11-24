@@ -1,6 +1,13 @@
 #!/bin/sh
 
 sudo docker build -t ncsu-app .
+echo " Successfully built a new image for the Simple Node.js App"
+
+echo " Remove existing images "
 sudo docker rmi localhost:5000/ncsu:latest
+
+echo " Tag Image "
 sudo docker tag ncsu-app localhost:5000/ncsu:latest
+
+echo " Push the tagged image to the registry "
 sudo docker push localhost:5000/ncsu:latest

@@ -3,7 +3,7 @@ redis:
   image: redis
 
 redis_ambassador:
-  container_name: "h1-redis-ambassador"
+  container_name: "redis-ambassador-M1"
   image: svendowideit/ambassador
   ports:
    - "6379:6379"

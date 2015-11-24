@@ -1,5 +1,5 @@
 redis_ambassador:
-  container_name: "h2-redis-ambassador"
+  container_name: "redis-ambassador-M2"
   image: svendowideit/ambassador
   expose:
    - "6379"
