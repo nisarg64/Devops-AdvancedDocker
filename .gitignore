@@ -2,3 +2,6 @@
 *.vagrant*
 *deploy*
 *App*
+Ambassador_Pattern_Steps
+Docker_Deploy_Steps
+FileIO_Steps
