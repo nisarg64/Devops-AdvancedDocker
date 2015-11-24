@@ -4,7 +4,7 @@
 * **Screencast**: https://youtu.be/jYzM69vhd5Y
 
 2) **Ambassador pattern**: Implement the remote ambassador pattern to encapsulate access to a redis container by a container on a different host.
-* **Screencast**:
+* **Screencast**: https://youtu.be/fMNABcTAVcQ
 
 3) **Docker Deploy**: Extend the deployment workshop to run a docker deployment process.
 * **Screencast**: 
